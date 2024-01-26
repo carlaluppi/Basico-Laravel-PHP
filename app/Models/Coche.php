@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Coche extends Model
 {
     use HasFactory;
+
+    public function propietario(){
+        return $this->belongsTo(Propietario::class);
+    }
 }
