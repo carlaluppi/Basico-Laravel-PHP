@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Propietario extends Model
 {
     use HasFactory;
+    protected $fillable = ['nombre','dni'];
 
     public function coches(){
         return $this->hasMany(Coche::class);

@@ -12,7 +12,8 @@ class CocheController extends Controller
      */
     public function index()
     {
-        //
+        $coches= Coche::all();
+        return response()->json($coches);
     }
 
     /**
@@ -27,8 +28,20 @@ class CocheController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $coche = new Coche();
+
+        $request->validate([
+        'marca'=>'require|max:255',
+        'modelo'=>'require',
+        'matricula'=>'require',
+        ]);
+
+        $coche->marca = $request->marca;
+        $coche->modelo = $request->modelo;
+        $coche->matricula = $request->matricula;
+
+        $coche->save();
     }
 
     /**

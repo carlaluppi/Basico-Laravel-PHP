@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Coche extends Model
 {
     use HasFactory;
+    protected $fillable = ['marca','modelo','matricula'];
 
     public function propietario(){
         return $this->belongsTo(Propietario::class);
