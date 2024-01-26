@@ -10,6 +10,6 @@ class Propietario extends Model
     use HasFactory;
 
     public function coches(){
-        $this->belongsTo(Coche::class);
+        return $this->hasMany(Coche::class);
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('propietarios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('coche_id')->constrained()->cascadeOnDelete();
             $table->string('nombre');
             $table->string('dni');
             $table->timestamps();
