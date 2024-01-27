@@ -47,9 +47,10 @@ class CocheController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Coche $coche)
+    public function show(Coche $coche, $id)
     {
-        //
+        $coche = Coche::find($id);
+        return $coche;
     }
 
     /**
@@ -63,16 +64,25 @@ class CocheController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Coche $coche)
+    public function update(Request $request, Coche $coche, $id)
     {
-        //
+        $coche = Coche::findOrFail($request->$id);
+
+        $coche->marca = $request->marca;
+        $coche->modelo = $request->modelo;
+        $coche->matricula = $request->matricula;
+
+        $coche->Save();
+        return $coche;
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Coche $coche)
+    public function destroy(Coche $coche, $id)
     {
-        //
+        $coche = Coche::destroy($id);
+        return $coche;
     }
 }
