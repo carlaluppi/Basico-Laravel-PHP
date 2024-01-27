@@ -8,59 +8,52 @@ use Illuminate\Http\Request;
 
 class PropietarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $propietarios =  Propietario::all();
+        return response()->json($propietarios);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        //
+    {   
+        $propietario = new Propietario();
+
+        $request->validate([
+        'coche_id' => 'required|exists:coches,id',
+        'nombre'=>'required',
+        'dni'=>'required',
+        ]);
+
+        $propietario->coche_id = $request->coche_id;
+        $propietario->nombre = $request->nombre;
+        $propietario->dni = $request->dni;
+
+        $propietario->save();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Propietario $propietario)
+    public function show(Propietario $propietario, $id)
     {
-        //
+        $propietario = Propietario::find($id);
+        return $propietario;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Propietario $propietario)
+    public function update(Request $request, Propietario $propietario, $id)
     {
-        //
+        $propietario = Propietario::find($id);
+        
+        $propietario->coche_id = $request->coche_id;
+        $propietario->nombre = $request->nombre;
+        $propietario->dni = $request->dni;
+        
+
+        $propietario->Save();
+        return $propietario;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Propietario $propietario)
+    public function destroy(Propietario $propietario, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Propietario $propietario)
-    {
-        //
+        $propietario = Propietario::destroy($id);
+        return $propietario;
     }
 }
