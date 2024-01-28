@@ -13,6 +13,6 @@ class Coche extends Model
 
     public function propietario():BelongsTo
     {
-        return $this->belongsTo(Propietario::class);
+        return $this->belongsTo(Propietario::class, 'foreign_key');
     }
 }

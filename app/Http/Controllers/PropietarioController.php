@@ -19,12 +19,11 @@ class PropietarioController extends Controller
         $propietario = new Propietario();
 
         $request->validate([
-        'coche_id' => 'required|exists:coches,id',
         'nombre'=>'required',
         'dni'=>'required',
         ]);
 
-        $propietario->coche_id = $request->coche_id;
+        
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
 
@@ -41,7 +40,7 @@ class PropietarioController extends Controller
     {
         $propietario = Propietario::find($id);
         
-        $propietario->coche_id = $request->coche_id;
+        
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
         

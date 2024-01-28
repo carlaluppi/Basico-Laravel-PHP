@@ -12,6 +12,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// Route::middleware('auth')->group
+
 Route::controller(CocheController::class)->group(function (){
     Route::get('/coches', 'index');
     Route::post('/coche', 'store');

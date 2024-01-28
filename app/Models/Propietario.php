@@ -13,6 +13,6 @@ class Propietario extends Model
 
     public function coches(): HasMany 
     {
-        return $this->hasMany(Coche::class, 'foreign_key');
+        return $this->hasMany(Coche::class);
     }
 }
