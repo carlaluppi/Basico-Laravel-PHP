@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('propietarios', function (Blueprint $table) {
             $table->id();
-            
             $table->string('nombre');
             $table->string('dni');
+            $table->string('coche');
             $table->timestamps();
         });
     }

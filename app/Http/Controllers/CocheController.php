@@ -15,21 +15,25 @@ class CocheController extends Controller
 
     public function store(Request $request)
     {   
-        $coche = new Coche();
 
         $request->validate([
-        'id_propietario' => 'required|exists:propietario,id',
-        'marca'=>'required',
-        'modelo'=>'required',
-        'matricula'=>'required',
+            // 'propietario_id' => 'required|exists:propietario,id',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'matricula' => 'required',
         ]);
-        $coche->id_propietario = $request->id_propietario;
+    
+        $coche = new Coche();
+        
+        $coche->propietario_id = $request->propietario_id;
         $coche->marca = $request->marca;
         $coche->modelo = $request->modelo;
         $coche->matricula = $request->matricula;
-
+    
         $coche->save();
-    }
+    
+        return response()->json(['message' => 'Coche creado exitosamente'], 201);
+}
 
     public function show(Coche $coche, $id)
     {
@@ -40,12 +44,12 @@ class CocheController extends Controller
     public function update(Request $request, Coche $coche, $id)
     {
         $coche = Coche::find($id);
-        $coche->id_propietario = $request->id_propietario;
+        $coche->propietario_id = $request->propietario_id;
         $coche->marca = $request->marca;
         $coche->modelo = $request->modelo;
         $coche->matricula = $request->matricula;
 
-        $coche->Save();
+        $coche->save();
         return $coche;
 
     }

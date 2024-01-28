@@ -29,3 +29,4 @@ Route::controller(PropietarioController::class)->group(function (){
     Route::put('/propietario/{id}', 'update');
     Route::delete('/propietario/{id}', 'destroy');
 });
+

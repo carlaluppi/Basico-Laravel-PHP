@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Propietario extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre','dni'];
+    protected $fillable = ['nombre','dni','coche'];
 
     public function coches(): HasMany 
     {
