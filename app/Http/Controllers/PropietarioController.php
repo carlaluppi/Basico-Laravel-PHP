@@ -39,7 +39,6 @@ class PropietarioController extends Controller
         
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
-        $propietario->coche = $request->coche;
 
         $propietario->save();
     }
@@ -56,7 +55,6 @@ class PropietarioController extends Controller
         
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
-        $propietario->coche = $request->coche;
 
         $propietario->save();
         return $propietario;
