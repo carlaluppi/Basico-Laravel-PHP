@@ -23,7 +23,7 @@ class PropietarioController extends Controller
             return response()->json(['message' => 'Propietario no encontrado'], 404);
         }
 
-        $coches = $propietario->coches; // asumiendo que "coches" es el nombre de la relación
+        $coches = $propietario->coches; 
 
         return response()->json($coches);}
 
