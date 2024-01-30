@@ -24,6 +24,7 @@ Route::controller(CocheController::class)->group(function (){
 
 Route::controller(PropietarioController::class)->group(function (){
     Route::get('/propietarios', 'index');
+    Route::get('/propietariocoches/{id}', 'indexcoche');
     Route::post('/propietario', 'store');
     Route::get('/propietario/{id}', 'show');
     Route::put('/propietario/{id}', 'update');

@@ -12,7 +12,20 @@ class PropietarioController extends Controller
     {
         $propietarios =  Propietario::all();
         return response()->json($propietarios);
+
     }
+
+    public function indexcoche($id)
+    {
+        $propietario = Propietario::find($id);
+
+        if (!$propietario) {
+            return response()->json(['message' => 'Propietario no encontrado'], 404);
+        }
+
+        $coches = $propietario->coches; // asumiendo que "coches" es el nombre de la relación
+
+        return response()->json($coches);}
 
     public function store(Request $request)
     {   

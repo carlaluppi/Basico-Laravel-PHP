@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Coche extends Model
 {
     use HasFactory;
-    protected $fillable = ['propietario_id','marca','modelo','matricula'];
+    protected $fillable = ['propietario_id','nombre_propietario','marca','modelo','matricula'];
 
     public function propietario():BelongsTo
     {
