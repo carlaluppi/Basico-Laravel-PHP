@@ -1,19 +1,33 @@
 <?php
 
+use App\Http\Controllers\CocheController;
+use App\Http\Controllers\PropietarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Route::middleware('auth')->group
+
+Route::controller(CocheController::class)->group(function (){
+    Route::get('/coches', 'index');
+    Route::post('/coche', 'store');
+    Route::get('/coche/{id}', 'show');
+    Route::put('/coche/{id}', 'update');
+    Route::delete('/coche/{id}', 'destroy');
+});
+
+Route::controller(PropietarioController::class)->group(function (){
+    Route::get('/propietarios', 'index');
+    Route::get('/propietariocoches/{id}', 'indexcoche');
+    Route::post('/propietario', 'store');
+    Route::get('/propietario/{id}', 'show');
+    Route::put('/propietario/{id}', 'update');
+    Route::delete('/propietario/{id}', 'destroy');
+});
+
