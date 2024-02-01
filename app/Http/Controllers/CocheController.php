@@ -20,7 +20,7 @@ class CocheController extends Controller
             'nombre_propietario' => 'required|max:255',
             'marca' => 'required|max:50',
             'modelo' => 'required|max:50',
-            'matricula' => ['required', 'regex:/^[0-9]{4}[A-Z]{3}$/'],
+            'matricula' => ['required', 'regex:/^[0-9]{4}[A-Za-z]{3}$/'],
         ]);
     
         $coche = new Coche();
