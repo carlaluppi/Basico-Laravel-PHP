@@ -54,6 +54,7 @@ class PropietarioController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'dni' => ['required', 'regex:/^\d{8}[a-zA-Z]$/'],
+            
         ]);
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;

@@ -16,9 +16,12 @@ class PropietarioFactory extends Factory
      */
     public function definition(): array
     {
+        $dniNumber = $this->faker->unique()->numerify('########');
+        $dniLetter = strtoupper($this->faker->randomLetter()); // Genera una letra aleatoria en mayúsculas
+    
         return [
-            'nombre' =>$this ->faker->name(),
-            'dni'=>$this ->faker->unique()->numerify('########'),
+            'nombre' => $this->faker->name(),
+            'dni' => $dniNumber . $dniLetter,
         ];
     }
 }
