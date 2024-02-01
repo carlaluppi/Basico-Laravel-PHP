@@ -22,7 +22,6 @@ class PropietarioController extends Controller
         if (!$propietario) {
             return response()->json(['message' => 'Propietario no encontrado'], 404);
         }
-
         $coches = $propietario->coches; 
 
         return response()->json($coches);}
@@ -32,10 +31,9 @@ class PropietarioController extends Controller
         $propietario = new Propietario();
 
         $request->validate([
-        'nombre'=>'required',
-        'dni'=>'required',
+            'nombre' => 'required|string|max:255',
+            'dni' => ['required', 'regex:/^\d{8}[a-zA-Z]$/'],
         ]);
-
         
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
@@ -53,6 +51,10 @@ class PropietarioController extends Controller
     {
         $propietario = Propietario::find($id);
         
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'dni' => ['required', 'regex:/^\d{8}[a-zA-Z]$/'],
+        ]);
         $propietario->nombre = $request->nombre;
         $propietario->dni = $request->dni;
 

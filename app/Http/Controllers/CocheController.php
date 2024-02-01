@@ -17,16 +17,16 @@ class CocheController extends Controller
     {   
         $request->validate([
             // 'propietario_id' => 'required|exists:propietario,id',
-            'nombre_propietario' => 'required',
-            'marca' => 'required',
-            'modelo' => 'required',
-            'matricula' => 'required',
+            'nombre_propietario' => 'required|max:255',
+            'marca' => 'required|max:50',
+            'modelo' => 'required|max:50',
+            'matricula' => ['required', 'regex:/^[0-9]{4}[A-Z]{3}$/'],
         ]);
     
         $coche = new Coche();
     
         $coche->propietario_id = $request->propietario_id;
-        $coche->nombre_propietario = $request->nombre_propietario; // Corregido aquí
+        $coche->nombre_propietario = $request->nombre_propietario; 
         $coche->marca = $request->marca;
         $coche->modelo = $request->modelo;
         $coche->matricula = $request->matricula;
