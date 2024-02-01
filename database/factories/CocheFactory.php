@@ -17,12 +17,14 @@ class CocheFactory extends Factory
      */
     public function definition(): array
     {
+        $propietario = Propietario::inRandomOrder()->first();
+
         return [
-            'propietario_id' => Propietario::inRandomOrder()->first()->id,
-            'nombre_propietario'=>$this ->faker->name(),
+            'propietario_id' => $propietario->id,
+            'nombre_propietario' => $propietario->nombre,
             'marca' => $this->faker->randomElement(['Toyota', 'Ford', 'Chevrolet', 'Honda', 'Nissan']),
             'modelo' => ucfirst($this->faker->unique()->word()), 
-            'matricula' => $this->faker->regexify('[0-9]{4}[A-Z]{3}'), 
+            'matricula' => $this->faker->regexify('[0-9]{4}[A-Z]{3}'),
         ];
     }
 }
